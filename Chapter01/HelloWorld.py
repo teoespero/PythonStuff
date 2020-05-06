@@ -1,0 +1,20 @@
+# This program is created to greet
+# everyone as I enter the world of Python programming
+
+print("Hello Python Interpreter")
+print("Hello World!")
+print("\n")
+print("Teodulfo Espero")
+print("IT Administrator")
+print("Marina Coast Water District")
+print("BS Cloud and Systems Administration")
+print("BS Software Development")
+print("MS Information Technology")
+print("-Western Governors University")
+print("\n")
+print("CEA Geographic Information Systems I")
+print("-Foothill College")
+print("\n")
+print("CEA Project Management")
+print("-Folsom College")
+print("\n")
