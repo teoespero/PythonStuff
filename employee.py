@@ -1,5 +1,3 @@
-import string
-
 
 class Employee():
 # class Employee where one object of class Employee represents one Employee
@@ -34,18 +32,16 @@ class Employee():
     # note that this method accepts both float and int
 
         if type(percentRaise) != float:
-            if percentRaise > 1:
-                percentRaise = float(percentRaise)/100
-
+            if type(percentRaise) == int:
+                if percentRaise >= 1:
+                    percentRaise = float(percentRaise)/100
+                else:
+                    raise ValueError()
+            else:
+                raise TypeError()
+        else:
+            if percentRaise < 0.00:
+                raise ValueError()
         self.salary = self.salary + (self.salary * percentRaise)
 
     ############################
-
-
-
-
-
-
-
-
-
