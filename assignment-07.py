@@ -4,141 +4,70 @@ import employee
 import manager
 import random # because we want a randomized SSN
 
-
-class EmployeeList():
-
-    ############################
-    def __init__(self):
-        self.employeelist = []
-
-    ############################
-
-    ############################
-    def add(self, Employee):
-        """
-        adds a new Employee to the EmployeeList
-        """
-        self.employeelist.append(Employee)
-    ############################
-
-    ############################
-    def __str__(self):
-    # returns a string containing all the data in the Employeelist
-
-        returnedString = ''
-        for employee in self.employeelist:
-            returnedString = returnedString + '\n' + str(employee) + '\n'
-        return returnedString
-    ############################
+############################
+# create instances for our Employee class
+print('create instances for our Employee class\n')
+myEmployee01 = employee.Employee('a','espero',random.randint(100000000,999999999),2000)
+myEmployee02 = employee.Employee('b','espero',random.randint(100000000,999999999),3000)
+print(myEmployee01,'\n')
+print(myEmployee02,'\n')
 
 ############################
-# testing the Employee Class
-print('testing the Employee Class\n')
-myEmployee01 = employee.Employee('teo','espero',random.randint(100000000,999999999),3000)
-print(myEmployee01)
+# call the magic methods
+print('call the magic methods')
+print('__eq__ test -->', myEmployee01 == myEmployee02)
+print ('__lt__ test -->', myEmployee01 < myEmployee02)
+
+print('\n-----------------------------------------------')
 
 ############################
-# testing the Employee.giveRaise method
-print('\n')
-print('testing the Employee.giveRaise method\n')
-try:
-  myEmployee01.giveRaise(10) # you can also use giveRaise(.10)
-except TypeError:
-  print('Cannot work with non-numeric values')
-except ValueError:
-  print('Cannot compute raises for negative values')
-print(myEmployee01)
-
-############################ContactList
-# testing the Manager class
-print('\n')
-print('testing the Manager class\n')
-myEmployee02 = manager.Manager('teo','espero',random.randint(100000000,999999999),3000,'IT Admin',random.randint(1000,1500))
-try:
-  myEmployee02.giveRaise(.10) # you can also use giveRaise(10)
-except TypeError:
-  print('Cannot work with non-numeric values')
-except ValueError:
-  print('Cannot compute raises for negative values')
-print(myEmployee02)
+# create more instances for our Employee class
+print('\ncreate more instances for our Employee class\n')
+myEmployee03 = employee.Employee('d','espero',random.randint(100000000,999999999),2000)
+myEmployee04 = employee.Employee('c','ybanez',random.randint(100000000,999999999),3000)
+print(myEmployee03,'\n')
+print(myEmployee04,'\n')
 
 ############################
-# testing the Employee List Class
-print('\n')
-print('testing the Employee List Class')
-myEmployee03 = employee.Employee('juanito','osorio',random.randint(100000000,999999999),1000)
-myEmployee04 = employee.Employee('annie','grefal',random.randint(100000000,999999999),1500)
-myEmployee05 = manager.Manager('josephine','ybanez',random.randint(100000000,999999999),2500,'Asst. IT Admin',1000)
-myEmployee06 = employee.Employee('jeff','tuan',random.randint(100000000,999999999),1750)
+# call the magic methods again
+print('call the magic methods again')
+print('__eq__ test -->', myEmployee03 == myEmployee04)
+print ('__lt__ test -->', myEmployee03 < myEmployee04)
+
+print('\n-----------------------------------------------')
 
 ############################
-# give the employees a 10% raise iin a loop
-mylist = [myEmployee03, myEmployee04, myEmployee05,myEmployee06]
+# create a list of employees
+print('create a list of employees\n')
 
-for ctr in mylist:
-  try:
-    ctr.giveRaise(.10)  # you can also use giveRaise(10)
-  except TypeError:
-    print('Cannot work with non-numeric values')
-  except ValueError:
-    print('Cannot compute raises for negative values')
+employee01 = manager.Manager('keith','van der maaten',random.randint(100000000,999999999),4000,'general manager',1000)
+employee02 = employee.Employee('paula','riso',random.randint(100000000,999999999),2100)
+employee03 = manager.Manager('kelly','cadiente',random.randint(100000000,999999999),2200, 'admin director',1000)
+employee04 = employee.Employee('teo','espero',random.randint(100000000,999999999),2300)
+employee05 = employee.Employee('derek','cray',random.randint(100000000,999999999),2400)
+employee06 = employee.Employee('rose','gill',random.randint(100000000,999999999),2600)
+employee07 = manager.Manager('tamela','hatfield',random.randint(100000000,999999999),2600, 'acctg supervisor',1000)
+
+theEmployeeList = [employee01, employee02, employee03, employee04, employee05, employee06, employee07]
+
+print('\n-----------------------------------------------')
+
+print('before sorting\n')
+for ee in theEmployeeList:
+    print(ee,'\n')
+
+print('\n-----------------------------------------------')
 
 ############################
-# add the employee information to our EmployeeList object
-employeeList = EmployeeList()
-for ctr in mylist:
-    employeeList.add(ctr)
+# sort the list, note that
+# we did not specify a key
 
-print(employeeList)
+print('after sorting\n')
 
-
-############################
-# OUTPUT
-"""
-
-testing the Employee Class
-
-Name: Teo Espero 
-SSN: 749-55-6296 
-Salary: $3,000.00
+theEmployeeList.sort()
+for ee in theEmployeeList:
+    print(ee,'\n')
 
 
-testing the Employee.giveRaise method
-
-Name: Teo Espero 
-SSN: 749-55-6296 
-Salary: $3,300.00
 
 
-testing the Manager class
-
-Name: Teo Espero 
-SSN: 109-05-7228                         
-Salary: $3,300.00 
-Manager Title: IT Admin
-Annual Bonus: $1,272.00
-
-
-testing the Employee List Class
-
-Name: Juanito Osorio 
-SSN: 793-34-8331 
-Salary: $1,100.00
-
-Name: Annie Grefal 
-SSN: 110-61-7163 
-Salary: $1,650.00
-
-Name: Josephine Ybanez 
-SSN: 752-37-3516                         
-Salary: $2,750.00 
-Manager Title: Asst. IT Admin
-Annual Bonus: $1,000.00
-
-Name: Jeff Tuan 
-SSN: 821-06-1293 
-Salary: $1,925.00
-
-
-Process finished with exit code 0
-"""
