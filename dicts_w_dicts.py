@@ -1,10 +1,14 @@
+#########################################################################
 # Teo Espero
 # BS Cloud and Systems Admin (WGU)
 # CEA GIS Technology II (Foothill)
 # 10-20-2020
-# This program is mainly created to mimic/simulate a DBMS system. Giving the user basic functionalities
-# for adding/removing/displaying records
+# This program is mainly created to mimic/simulate a DBMS system. Giving
+# the user basic functionalities for adding/removing/displaying records
 
+
+#########################################################################
+# addData allows the user to add data to the DB
 def addData():
     print()
     print('ADD DATA')
@@ -16,6 +20,9 @@ def addData():
 
     newDegree = 'D'
     degreeList = []
+
+    # note that degrees are always treated as list
+    # if you leave it blank it will exit this function
     while newDegree != '':
         newDegree = input('Degree: ')
         if len(newDegree) > 1:
@@ -23,12 +30,19 @@ def addData():
             data[recName]['degree'] = degreeList
         else:
             break
+#########################################################################
 
 
+#########################################################################
+# printData creates a sequential display of the data that we have in
+# the "DB"
 def printData():
     print()
     print('PRINT DATA')
     print()
+
+    # note that this function will only print if there
+    # is data to print
     if len(data) > 0:
         for key, value in data.items():
             print('Record ID: {}'.format(str(key)).title())
@@ -40,7 +54,11 @@ def printData():
             print()
     else:
         print('No data to display.')
+#########################################################################
 
+
+#########################################################################
+# delData allows the user to remove a specific record in the "DB"
 def delData():
     print()
     print('REMOVE DATA')
@@ -48,14 +66,17 @@ def delData():
     print()
     whichOne = input('Which one do I delete? ')
     try:
-        del data[whichOne]
+        del data[whichOne.lower()]
         print()
         print('{} has been deleted.'.format(whichOne))
         printData()
     except:
         print('Key does not exist.')
+#########################################################################
 
 
+#########################################################################
+# locate the record base on whats part of the name field
 def findData():
     print()
     print('LOCATE DATA')
@@ -77,8 +98,11 @@ def findData():
                 break
     print()
     print('{} record(s) were found'.format(foundCtr))
+#########################################################################
 
 
+#########################################################################
+# pretty much self explanatory
 def menu():
     print()
     print('MENU CHOICES')
@@ -91,8 +115,12 @@ def menu():
     print()
     myChoice = input('Selection: ')
     return myChoice
+#########################################################################
 
 
+#########################################################################
+# defineAction is the task master, passing the action to the
+# correct function
 def defineAction(myChoice):
     if myChoice == 1:
         addData()
@@ -107,6 +135,7 @@ def defineAction(myChoice):
         print('All data have been removed.')
 
 
+#########################################################################
 # main
 
 # base data
@@ -138,3 +167,4 @@ while str(menuChoice) not in '123456':
             menuChoice = 0
 
 print('Goodbye.')
+#########################################################################
