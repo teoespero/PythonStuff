@@ -9,6 +9,9 @@
 
 #########################################################################
 # addData allows the user to add data to the DB
+from time import sleep
+
+
 def addData():
     print()
     print('ADD DATA')
@@ -30,6 +33,8 @@ def addData():
             data[recName]['degree'] = degreeList
         else:
             break
+    print()
+    print('Record {} has been added.'.format(recName).title())
 #########################################################################
 
 
@@ -131,6 +136,10 @@ def defineAction(myChoice):
     if myChoice == 4:
         printData()
     if myChoice == 5:
+        print()
+        print('PURGING DATA')
+        sleep(1)
+        print()
         data.clear()
         print('All data have been removed.')
 
